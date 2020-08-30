@@ -1,0 +1,41 @@
+# eureka
+eureka:
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 30
+    lease-expiration-duration-in-seconds: 60
+    health-check-url-path: /actuator/health
+  client:
+    registry-fetch-interval-seconds: 5
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      #defaultZone: http://node1:18761/eureka,http://node2:18762/eureka,http://node3:18763/eureka
+      #defaultZone: http://discovery:8761/eureka
+      defaultZone: http://localhost:8761/eureka
+
+# Actuator
+management:
+  health:
+    rabbit:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: true
+
+# Spring
+spring:
+  application:
+    name: e-school-service-account
+  main:
+    allow-bean-definition-overriding: true
+  boot:
+    admin:
+      url: http://localhost:${server.port}
+

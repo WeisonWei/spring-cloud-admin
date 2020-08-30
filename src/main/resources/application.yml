@@ -1,0 +1,19 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: true
+  metrics:
+    tags:
+      application: ${spring.application.name}
+
+
+spring:
+  mvc:
+    async:
+      request-timeout: -1
